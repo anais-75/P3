@@ -19,7 +19,7 @@ class labyrinthe:
 		self.set_items()
 		self.gar_character()
 		self.mc_character()
-
+		
 	# Méthode qui crée le dictionnaire représentant le labyrinthe
 	def create_table(self):
 	
@@ -120,25 +120,26 @@ class labyrinthe:
 
 		# print(self.maze)
 	
-	# on place le gardien => Mettre une lettre spécifique dans ton fichier lab.txt
+	# 1 - on place le gardien => Mettre une lettre spécifique dans ton fichier lab.txt
 	def gar_character(self):
 		for i in self.maze:
 			#for items in ITEMS:
 			if self.maze[i] == 'a':
+				#print "jshdjkhkjdhkjsdhkjshd", self.maze[i]
 				self.maze[i] = Items(CHAR[1])
 				 
 				
 				
 		
 	
-	#on place MacGyver => Mettre une lettre spécifique dans ton fichier lab.txt
+	# 2 - on place MacGyver => Mettre une lettre spécifique dans ton fichier lab.txt
 	#def mac_character(self):
 	def mc_character(self):
 		for i in self.maze:
 			if self.maze[i] == 'd':
 				self.maze[i] = Items(CHAR[0])	
 				
-	#déplacements => créer les 4 méthodes
+	# 3 - déplacements => créer les 4 méthodes
 	def move_left(self):
 		return "left"
 		
@@ -165,6 +166,7 @@ if __name__ == "__main__":
 	l = labyrinthe()
 	#print(l.maze)
 	print ("le nombre d'objet trouvés sur le parcours est de {}" .format(l.count_items()))
+	
 	
 	
 	

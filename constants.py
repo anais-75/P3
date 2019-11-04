@@ -9,17 +9,17 @@ SIZE_SPRITE = 30
 SIDE_WINDOW = NUMBER_SPRITE_SIDE * SIZE_SPRITE
 
 #Customizing the window
-TITLE_WUNDOW = "MacGyver maze"
-IMAGE_ICONE = "images/MacGyver.png"
+TITLE_WINDOW = "MacGyver"
+IMAGE_ICONE = "MacGyver.png"
 
 #lists of images for the game 
-IMAGE_ARRIVAL = 'images/Gardien.png'
-BACKGROUND = 'images/Background.jpg'
-WALL = 'images/Wall.png'
-MacGyver = 'images/MacGyver.png'
-Guardian = 'images/Guardian.png'
-ITEM_N = 'images/Needle.png'
-ITEM_E = 'images/Ether.png'
-ITEM_T = 'images/Tube.png'
+IMAGE_ARRIVAL = "Gardien.png"
+BACKGROUND = "Background.jpg"
+WALL = "Wall.png"
+MacGyver = "MacGyver.png"
+Guardian = "Guardian.png"
+ITEM_N = "Needle.png"
+ITEM_E = "Ether.png"
+ITEM_T = "Tube.png"
 ITEMS = [ITEM_N, ITEM_E, ITEM_T]
 CHAR = [MacGyver, Guardian]

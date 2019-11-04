@@ -1,57 +1,65 @@
 #!/usr/bin/python3
-# coding: utf-8 
-"""
-this file contains all the class methods that can animate it and find the output
-"""
-from labyrinthe import*
-from constants import *
+# coding: utf-8
+import random 
+#import DeplacementMc
+import random
+import sys
 from items import Items
-		
-class Character:
-	"""Classe permettant de créer un personnage"""
-	def __init__(self, perso):
-		#Sprites du personnage
-		self.perso= pygame.image.load(MacGyver).convert_alpha()
-		#Position du personnage en cells et en pixels
-		self.cell_x = 0
-		self.cell_y = 0
-		self.x = 0
-		self.y = 0
-		
+from constants import*
+from labyrinthe import*
+
+
+class Move:
 	
-	def move(self, direction):
-		"""Methode permettant de déplacer le personnage et de verifier que les coord soit dans le labyrinthe"""
+	def __init__(self):
+		self.mc = Items(CHAR[0]) 
+		self.l = labyrinthe()
+		self.liste_objet=[]
+		self.count_objet=0
+	
 		
-		#Déplacement vers la droite
-		if direction == 'right':
-			#Pour ne pas dépasser l'écran
-			if self.cell_x <= (numbre_sprite_side - 1)and [self.cell_y][self.cell_x+1] != "w":
-					#Déplacement d'une cell
-					self.cell_x += 1
-					#Calcul de la position "réelle" en pixel
-					self.x = self.cell_x * size_sprite
-			#Image dans la bonne direction
-			self.direction = self.right
+############## Methode de deplacment #########################################		
+
+	def deplacement(self, coord, liste, direction):
 		
-		#Déplacement vers la gauche
-		if direction == 'left':
-			if self.cell_x >= 0 and [self.cell_y][self.cell_x-1] != "w" and self.cell_x -1 >= 0:
-					self.cell_x -= 1
-					self.x = self.cell_x * size_sprite
-			self.direction = self.gauche
+		t, l2 = coord, liste
+		direction = direction
+		t1 = self.l.find_path(coord[0], coord[1], direction)
+		print (t1)
+		if isinstance (l2[t1], Items):
+			self.count_objet += 1
+			print ("mon compteur d'objet compte",self.count_objet)
+			self.liste_objet=l2[t1]
+			print ("le contenu de la liste d'objet est:", self.liste_objet)
+			l2 [t1] = Items(CHAR[0])
+			l2 [t] = 'o'
+			print (t1)
+			return t1
+		else:						
+			if (self.l.check_cell(t1[0], t1[1])):
+				t1 = self.l.find_path(coord[0], coord[1], direction)
+				l2 [t1] = Items(CHAR[0])
+				l2 [t] = 'o'
+				print(l2)
+				print (type (l2))
+				print (t1)
+			else:
+				t1=t
+			return t1
+
+####################### PROGRAMME PRINCIPAL ####################
+
+if __name__ == "__main__":
+	
+
+# DEBUT DE LA PARTIE, ON INITIALISE McGiver en position (0,0)
+
+	McG_depl= Move()
+	l_test = McG_depl.l.maze
+	key=(0,0)
+	
+	while key!=(14,14):
+		direction = input("Choisissez la direction : ")
+		key = (McG_depl.deplacement(key,l_test,direction))
 		
-		#Déplacement vers le haut
-		if direction == 'up':
-			if self.cell_y >= 0 and [self.cell_y-1][self.cell_x] != "w" and self.cell_y-1 >= 0:
-			#rajouté une condition sur le mur 	
-					self.cell_y -= 1
-					self.y = self.cell_y * size_sprite
-			self.direction = self.haut
 		
-		#Déplacement vers le bas
-		if direction == 'down':
-			if self.cell_y < (numbre_sprite_side - 1) and [self.cell_y+1][self.cell_x] != "w":    
-			#rajouté une condition sur le mur 	
-					self.cell_y += 1
-					self.y = self.cell_y * size_sprite
-			self.direction = self.down
