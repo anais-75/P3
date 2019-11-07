@@ -37,8 +37,8 @@ class Move:
 				t1 = self.l.find_path(coord[0], coord[1], direction)
 				l2 [t1] = self.mc
 				l2 [t] = 'o'
-				print(l2)
-				print (type (l2))
+				#print(l2)
+				#print (type (l2))
 				print (t1)
 			else:
 				t1=t

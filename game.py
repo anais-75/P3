@@ -34,6 +34,17 @@ class application:
 		image_Guardian = pygame.transform.scale(image_Guardian, (30,30))
 		self.window.blit(image_Guardian, (420,420))
 		return pygame.display.flip()
+	#Placement des murs
+	def wall (self):
+		l = labyrinthe()
+		for key, value in (l.maze.items()):
+			if value == 'w':
+				image_Wall = pygame.image.load("wall.png").convert_alpha()
+				image_Wall = pygame.transform.scale(image_Wall,(30,30))
+				self.window.blit(image_Wall, ((key[1]*30),(key[0]*30)))  
+				
+		return image_Wall
+
 
 	#placement des objets
 	def set_items(self):
@@ -73,16 +84,7 @@ class application:
 		pygame.display.flip() 	
 				
 		
-	def wall (self):
-		l = labyrinthe()
-		for key, value in (l.maze.items()):
-			if value == 'w':
-				image_Wall = pygame.image.load("wall.png").convert_alpha()
-				image_Wall = pygame.transform.scale(image_Wall,(30,30))
-				self.window.blit(image_Wall, ((key[1]*30),(key[0]*30)))  
-				
-		return image_Wall
-
+	
 if __name__ == "__main__":	
 	
 
