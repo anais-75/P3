@@ -24,7 +24,7 @@ class labyrinthe:
 	def create_table(self):
 	
 		N = 15
-		FichierLabyrinth = open('maze.txt', 'r') # instanciation de l'objet Fichier 
+		FichierLabyrinth = open('maze2.txt', 'r') # instanciation de l'objet Fichier 
 		lignes, colonnes = 15, 15
 
 		liste = [ 0 for i  in range(0)]  
@@ -117,15 +117,12 @@ class labyrinthe:
 
 			# mettre un objet dans la case des coordonnées trouvées aléatoirement
 			self.maze[x] = Items(items)
-
-		# print(self.maze)
+		return (self.maze)
 	
 	# 1 - on place le gardien => Mettre une lettre spécifique dans ton fichier lab.txt
 	def gar_character(self):
 		for i in self.maze:
-			#for items in ITEMS:
 			if self.maze[i] == 'a':
-				#print "jshdjkhkjdhkjsdhkjshd", self.maze[i]
 				self.maze[i] = Items(CHAR[1])
 				 
 				
@@ -160,12 +157,17 @@ class labyrinthe:
 			if valeur == ITEMS[0] or valeur == ITEMS[1] or valeur == ITEMS[2]:
 				count +=1
 		return count
-
+		
+	def retourne_value (self,l):
+		
+		for valeur in self.maze.values():
+			if valeur == 'w':
+				print (valeur)
+		return valeur
 		
 if __name__ == "__main__":
 	l = labyrinthe()
-	#print(l.maze)
-	print ("le nombre d'objet trouvés sur le parcours est de {}" .format(l.count_items()))
+	print (l.set_items())
 	
 	
 	
