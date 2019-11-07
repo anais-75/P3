@@ -100,7 +100,7 @@ if __name__ == "__main__":
 	pygame.display.flip() 	#Rafraîchissement
 			 
 	McG_depl= Move()
-	l_test = McG_depl.l.maze  
+	l_test = McG_depl.laby.maze  
 	
 	key1=(0,0)
 	
@@ -112,6 +112,7 @@ if __name__ == "__main__":
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_DOWN:
 					key2=McG_depl.deplacement(key1,l_test, "bottom")
+					print ("key1 bottom",key1, key2)
 					if key1 == key2 or (key2[0]<0) or (key2[0]>14) or key2[1]<0 or key2[1]>14:
 						pass
 					else:
@@ -119,6 +120,7 @@ if __name__ == "__main__":
 												
 				if event.key == pygame.K_LEFT:
 					key2=McG_depl.deplacement(key1,l_test,"left")
+					print ("key1 left",key1, key2)
 					if key1 == key2:
 						pass
 					else:
@@ -126,22 +128,23 @@ if __name__ == "__main__":
 
 				if event.key == pygame.K_UP:
 					key2=McG_depl.deplacement(key1,l_test,"top")
+					print ("key1 top",key1, key2)
 					if key1 == key2:
 						pass
 					else:
 						Mac = Mac.move((0),(-30))
 			
 				if event.key == pygame.K_RIGHT:
-					print ("key1 avant",key1)
 					key2=McG_depl.deplacement(key1,l_test,"right")
+					print("key1 droite",key1, key2)
 					if key1 == key2:
 						pass
 					else:
 						Mac = Mac.move((30),(0))
 
 				key1=key2
+				# g.init_background()
 				g.window.blit(image_Macgyver, Mac)
-				g.init_background()
 				g.gardien()
 				g.wall()
 				pygame.display.flip()
