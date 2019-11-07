@@ -67,22 +67,14 @@ class application:
 
 	def obj_rand(self):
 		l = labyrinthe()
-		
 		for key, value in  (l.maze.items()):
-			if value == ITEMS[0]:
-				Needle = pygame.image.load("Needle.png").convert_alpha()
-				Needle = pygame.transform.scale(Needle,(30,30))
-				self.window.blit(Needle, ((key[1]*30),(key[0]*30)))
-			if value == ITEMS[1]:
-				Ether = pygame.image.load("Ether.png").convert_alpha()
-				Ether = pygame.transform.scale(Ether,(30,30))
-				self.window.blit(Ether, ((key[1]*30),(key[0]*30)))	
-			if value == ITEMS[2]:
-				Tube = pygame.image.load("Tube.png").convert_alpha()
-				Tube = pygame.transform.scale(Tube,(30,30))
-				self.window.blit(Tube, ((key[1]*30),(key[0]*30)))				
-		pygame.display.flip() 	
-				
+			for i in (ITEMS):
+				if value == i:
+					Needle= pygame.image.load((i)).convert_alpha()
+					Needle = pygame.transform.scale(Needle,(30,30))
+					self.window.blit(Needle, ((key[1]*30),(key[0]*30)))
+					pygame.display.flip() 
+					
 		
 	
 if __name__ == "__main__":	

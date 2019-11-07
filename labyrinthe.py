@@ -45,7 +45,7 @@ class labyrinthe:
 						char = lab[index]
 						liste.append(char)
 						index +=1
-		liste2 ={}
+		liste2 = {}
 		nb_lin = 15
 		nb_col = len(liste) // nb_lin
 		mat = [[''] * nb_col for i in range(nb_lin)]
