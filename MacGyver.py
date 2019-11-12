@@ -8,58 +8,50 @@ from items import Items
 from constants import*
 from labyrinthe import*
 
-
 class Move:
 	
 	def __init__(self):
 		self.mc = Items(CHAR[0]) 
-		self.l = labyrinthe()
+		self.laby = labyrinthe()
 		self.liste_objet=[]
 		self.count_objet=0
 	
-		
-############## Methode de deplacment #########################################		
+	#Methode de deplacment 	
+	def deplacement(self, coord, grid, direction):
 
-	def deplacement(self, coord, liste, direction):
-		
-		t, l2 = coord, liste
-		direction = direction
-		t1 = self.l.find_path(coord[0], coord[1], direction)
-		print (t1)
-		if isinstance (l2[t1], Items):
+		new_coordinates = self.laby.find_path(coord[0], coord[1], direction)
+
+		# VERIFIER LA DISPO DES NOUVELLES COORDONNES !!!
+		# Vérifier qu'on est dans le labyrinthe
+		# Vérifier que ce n'est pas un mur :D
+		if new_coordinates[0] not in range(0, 15) or new_coordinates[1] not in range(0, 15) or grid[new_coordinates] == 'w':
+			# on n'est pas dans le labyrinthe
+			return coord
+
+		grid[new_coordinates] = self.mc
+		grid[coord] = 'o'
+
+		if isinstance (grid[new_coordinates], Items):
 			self.count_objet += 1
-			print ("mon compteur d'objet compte",self.count_objet)
-			self.liste_objet=l2[t1]
-			print ("le contenu de la liste d'objet est:", self.liste_objet)
-			l2 [t1] = Items(CHAR[0])
-			l2 [t] = 'o'
-			print (t1)
-			return t1
+			self.liste_objet=grid[new_coordinates]
 		else:						
-			if (self.l.check_cell(t1[0], t1[1])):
-				t1 = self.l.find_path(coord[0], coord[1], direction)
-				l2 [t1] = Items(CHAR[0])
-				l2 [t] = 'o'
+			new_coordinates = coord
+			if (self.laby.check_cell(new_coordinates[0], new_coordinates[1])):
+				new_coordinates = self.l.find_path(coord[0], coord[1], direction)
 				print(l2)
-				print (type (l2))
-				print (t1)
-			else:
-				t1=t
-			return t1
+		return new_coordinates
+	
 
-####################### PROGRAMME PRINCIPAL ####################
+#programme principal
 
 if __name__ == "__main__":
 	
-
 # DEBUT DE LA PARTIE, ON INITIALISE McGiver en position (0,0)
 
 	McG_depl= Move()
-	l_test = McG_depl.l.maze
+	l_test = McG_depl.laby.maze
 	key=(0,0)
 	
 	while key!=(14,14):
 		direction = input("Choisissez la direction : ")
 		key = (McG_depl.deplacement(key,l_test,direction))
-		
-		

@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 #coding: utf-8 
 import random
+import pygame
 from items import Items
 from constants import*
 
 #Ouverture et traitement du fichier labyrinth.txt
 
 class labyrinthe:
+
 	count = 0
 	def __init__(self):
 		self.__class__.count += 1
@@ -16,6 +18,7 @@ class labyrinthe:
 		# on lance la recherche des cases "vides" dès le début
 		self.free_cells = self.free_coords()
 		# On veut placer les objets
+		
 		self.set_items()
 		self.gar_character()
 		self.mc_character()
@@ -30,9 +33,7 @@ class labyrinthe:
 		liste = [ 0 for i  in range(0)]  
 
 		# On crée une liste vide
-		index = 0
-		i=0
-		j=0
+		index, i, j = 0, 0, 0
 		for i in range(N):
 			for j in range(N):
 				lab = FichierLabyrinth.read()
@@ -55,8 +56,6 @@ class labyrinthe:
 			mat[i][j] = elt
 			myTuple = (i, j)
 			liste2[myTuple] = mat[i][j]
-
-		#print("maliste2", liste2)
 		return liste2
 	
 	# Méthode qui permet de vérifier si la case est un chemin ou non		
@@ -104,6 +103,7 @@ class labyrinthe:
 
 	# on cherche à trouver 3 cases vides pour y mettre des objets
 	def set_items(self):
+		liste_obj=[]
 		# on boucle 3 fois, une fois par objet à placer
 		for items in ITEMS:
 			# récupérer des coordonnées pour y placer un objet
@@ -114,32 +114,22 @@ class labyrinthe:
 			for cell in self.free_cells:
 				if cell == x:
 					self.free_cells.remove(cell)
-
 			# mettre un objet dans la case des coordonnées trouvées aléatoirement
-			self.maze[x] = Items(items)
-
-		# print(self.maze)
-	
-	# 1 - on place le gardien => Mettre une lettre spécifique dans ton fichier lab.txt
+				self.maze[x] = Items(items)
+				
+	#on place le gardien 
 	def gar_character(self):
 		for i in self.maze:
 			#for items in ITEMS:
 			if self.maze[i] == 'a':
-				#print "jshdjkhkjdhkjsdhkjshd", self.maze[i]
 				self.maze[i] = Items(CHAR[1])
-				 
-				
-				
-		
-	
-	# 2 - on place MacGyver => Mettre une lettre spécifique dans ton fichier lab.txt
 	#def mac_character(self):
 	def mc_character(self):
 		for i in self.maze:
 			if self.maze[i] == 'd':
 				self.maze[i] = Items(CHAR[0])	
 				
-	# 3 - déplacements => créer les 4 méthodes
+	#déplacements => créer les 4 méthodes
 	def move_left(self):
 		return "left"
 		
@@ -160,13 +150,18 @@ class labyrinthe:
 			if valeur == ITEMS[0] or valeur == ITEMS[1] or valeur == ITEMS[2]:
 				count +=1
 		return count
-
 		
-if __name__ == "__main__":
-	l = labyrinthe()
-	#print(l.maze)
-	print ("le nombre d'objet trouvés sur le parcours est de {}" .format(l.count_items()))
+	def retourne_value (self,l):
+		for valeur in self.maze.values():
+			if valeur == 'w':
+				print (valeur)
+		return valeur
+
 	
+if __name__ == "__main__":
+	
+	l = labyrinthe()
+ 
 	
 	
 	
