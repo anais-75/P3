@@ -18,7 +18,6 @@ class Move:
 	
 	#Methode de deplacment 	
 	def deplacement(self, coord, grid, direction):
-
 		new_coordinates = self.laby.find_path(coord[0], coord[1], direction)
 
 		# VERIFIER LA DISPO DES NOUVELLES COORDONNES !!!

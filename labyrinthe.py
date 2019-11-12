@@ -115,7 +115,7 @@ class labyrinthe:
 				if cell == x:
 					self.free_cells.remove(cell)
 			# mettre un objet dans la case des coordonnées trouvées aléatoirement
-				self.maze[x] = Items(items)
+					self.maze[x] = Items(items)
 				
 	#on place le gardien 
 	def gar_character(self):
