@@ -10,8 +10,8 @@ class Items():
 	
 	"""Je définis ici une classe spéciale qui me compare deux objet de type Items	"""
 	def __eq__(self, items):
-		return self.name == items   
+		return self.name == items
 
 if __name__ == "__main__":
-	
+	#test
 	print("items")

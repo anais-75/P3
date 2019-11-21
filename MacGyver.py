@@ -16,15 +16,13 @@ class Move:
 		self.liste_objet=[]
 		self.count_objet=0
 	
-	#Methode de deplacment 	
+	# method of moving in the labyrinth	
 	def deplacement(self, coord, grid, direction):
 		new_coordinates = self.laby.find_path(coord[0], coord[1], direction)
 
-		# VERIFIER LA DISPO DES NOUVELLES COORDONNES !!!
-		# Vérifier qu'on est dans le labyrinthe
-		# Vérifier que ce n'est pas un mur :D
+		# check the availability of new coordinate and that we are in the labyrinth
+		# check that it's not a wall 
 		if new_coordinates[0] not in range(0, 15) or new_coordinates[1] not in range(0, 15) or grid[new_coordinates] == 'w':
-			# on n'est pas dans le labyrinthe
 			return coord
 
 		grid[new_coordinates] = self.mc
@@ -41,11 +39,11 @@ class Move:
 		return new_coordinates
 	
 
-#programme principal
+# main program
 
 if __name__ == "__main__":
 	
-# DEBUT DE LA PARTIE, ON INITIALISE McGiver en position (0,0)
+	'''begenning of the part, we initialize macgyver in position (0,0)'''
 
 	McG_depl= Move()
 	l_test = McG_depl.laby.maze

@@ -5,25 +5,25 @@ import pygame
 from items import Items
 from constants import*
 
-#Ouverture et traitement du fichier labyrinth.txt
+#Opening and processing the file labyrinth.txt
 
 class labyrinthe:
 
 	count = 0
 	def __init__(self):
 		self.__class__.count += 1
-		# on crée le dictionnaire du labyrinthe
+		# we create the dictionary labyrinthe
 		self.maze = self.create_table()
-		# on crée un attribut pour enregistrer les coordonnées "vides" ("o")
-		# on lance la recherche des cases "vides" dès le début
+		# we create an attribute to save the coordinates "free cell" ("o")
+		# we look for empty boxes 
 		self.free_cells = self.free_coords()
-		# On veut placer les objets
+		# We want to place the objects
 		
 		self.set_items()
 		self.gar_character()
 		self.mc_character()
 		
-	# Méthode qui crée le dictionnaire représentant le labyrinthe
+	# Method that creates the dictionary representing the labyrinth
 	def create_table(self):
 	
 		N = 15
@@ -32,7 +32,7 @@ class labyrinthe:
 
 		liste = [ 0 for i  in range(0)]  
 
-		# On crée une liste vide
+		# we create an empty list 
 		index, i, j = 0, 0, 0
 		for i in range(N):
 			for j in range(N):
@@ -58,24 +58,24 @@ class labyrinthe:
 			liste2[myTuple] = mat[i][j]
 		return liste2
 	
-	# Méthode qui permet de vérifier si la case est un chemin ou non		
+	# Method to check if the box is a path or not		
 	def check_cell(self, x, y):
 		""" Check wether the new coordinates are free to walk on or not """
 
-		# vérification de l'existence des coordonnées
+		# verification of the existence of coordinates
 		if (x, y) not in self.maze:
 			# la case n'existe pas
 			return False
 
-		# vérification de la disponibilité de la case
+		# checking the availability of the box
 		if self.maze[(x, y)] == 'o':
-			# Renvoie vrai si les nouvelles coordonnées correspondent à un chemin
+			# Returns true if the new coordinates correspond to a path
 			return True
-		# Renvoie faux sinon
+		# Return false otherwise
 		return False
 
-	# Méthode qui permet de calculer les coordonnées d'une case en fonction
-	# des coordonnées d'une case de départ ET d'une direction
+	# Method that calculates the coordinates of a box according
+	# to the coordinates of a starting box and a direction
 	# direction = ["top", "right", "bottom", "left"]
 	def find_path(self, x, y, direction):
 		""" Find new coordinates with direction """
@@ -88,48 +88,44 @@ class labyrinthe:
 		elif direction == "right":
 			return (x, y+1)
 
-	# méthode qui te renvoie une liste de toutes les coordonnées des cases où
-	# on peut marcher
+	# method that returns a list of all the coordinates of the boxes where you can walk
 	def free_coords(self):
-		# on crée une liste vide pour y stocker les coordonnées des cases vides
+		# we create an empty list to store the coordinates of empty boxes
 		fc = []
-		# on vérifie les coordonnées une par une
+		# we check the coordinates one by one
 		for i in self.maze:
 			if self.maze[i] == 'o':  
-				# enregistre la cellule vide dans la liste "fc"
+				# save the empty cell in the "fc" list
+				
 				fc.append(i)
-		# on retourne la liste contenant les cases vides
 		return fc
 
-	# on cherche à trouver 3 cases vides pour y mettre des objets
+	# we try to find 3 empty boxes to put objects
 	def set_items(self):
 		liste_obj=[]
-		# on boucle 3 fois, une fois par objet à placer
 		for items in ITEMS:
-			# récupérer des coordonnées pour y placer un objet
+			# retrieve coordinates to place an object
 			x = random.choice(self.free_cells)
 
-			# vérifier si la case sélectionnée aléatoirement n'a pas déjà été prise
-			# par une boucle précédente.
+			# check if the randomly selected box has not already been taken by a previous loop.
 			for cell in self.free_cells:
 				if cell == x:
 					self.free_cells.remove(cell)
-			# mettre un objet dans la case des coordonnées trouvées aléatoirement
+			# put an object in the box of coordinates found randomly
 					self.maze[x] = Items(items)
 				
-	#on place le gardien 
+	# we place the guardien 
 	def gar_character(self):
 		for i in self.maze:
-			#for items in ITEMS:
 			if self.maze[i] == 'a':
 				self.maze[i] = Items(CHAR[1])
-	#def mac_character(self):
+	# we place the macgyver 
 	def mc_character(self):
 		for i in self.maze:
 			if self.maze[i] == 'd':
 				self.maze[i] = Items(CHAR[0])	
 				
-	#déplacements => créer les 4 méthodes
+	# we create 4 méthods to move macgyver 
 	def move_left(self):
 		return "left"
 		
@@ -143,7 +139,7 @@ class labyrinthe:
 		return "bottom"
 		
         
-	#Compter le nombre d'objets ramassés 
+	# Count the number of objects picked up
 	def count_items(self):
 		count = 0
 		for valeur in self.maze.values():
