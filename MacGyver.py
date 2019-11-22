@@ -50,5 +50,5 @@ if __name__ == "__main__":
 	key=(0,0)
 	
 	while key!=(14,14):
-		direction = input("Choisissez la direction : ")
+		direction = input("chose a direction : ")
 		key = (McG_depl.deplacement(key,l_test,direction))

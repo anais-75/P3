@@ -133,7 +133,7 @@ def launch_game():
 				rect_Needle = image_Needle.get_rect()
 				rect_Needle = rect_Needle.move(value)
 
-		
+		# we load a MacGyver picture  on the window
 		image_Macgyver = pygame.image.load("images/MacGyver.png").convert_alpha()
 		image_Macgyver = pygame.transform.scale(image_Macgyver, (30,30))
 		Mac = image_Macgyver.get_rect()
@@ -145,6 +145,7 @@ def launch_game():
 		key1=(0,0)
 		key2=(0,0)
 		pygame.key.set_repeat(400, 30)
+		#we load a background picture  
 		background = pygame.image.load("images/Background.jpg").convert_alpha()
 		g.window.blit(background, (0,0))
 		
@@ -159,7 +160,6 @@ def launch_game():
 		textrect2 = text2.get_rect(center=(225,60))
 		textrect3 = text3.get_rect(center=(225,120))
 		textrect4 = text4.get_rect(center=(225,150))
-		
 		g.window.blit(text2, textrect2)
 		g.window.blit(text3, textrect3)
 		g.window.blit(text4, textrect4)
@@ -173,7 +173,7 @@ def launch_game():
 		continue_home = 1
 		continue_game = 1
 
-	#Boucle continue home 
+	#loop continue home 
 		while continue_home:
 			pygame.init()
 			pygame.time.Clock().tick(30)
@@ -191,7 +191,7 @@ def launch_game():
 					continuer = 0
 					pygame.quit()
 		
-	#Boucle continue jeu 		
+	#loop continue game 		
 		while continue_game:
 			#Keyboard touch used to quit game
 			for event in pygame.event.get():			
@@ -260,9 +260,9 @@ def launch_game():
 
 					if (Mac == gardian_rect and count == 3):  
 						font = pygame.font.SysFont('comicsansms', 70, True, False)
-						text = font.render("You win !", 1, (255, 255, 255)) 
+						text = font.render("You win!", 1, (255, 255, 255)) 
 						textrect = text.get_rect()
-						textrect.move_ip(65,190)
+						textrect.move_ip(80,190)
 						g.window.blit(text, textrect)
 						pygame.display.flip()
 						time.sleep(3)

@@ -23,11 +23,12 @@ class labyrinthe:
 		self.gar_character()
 		self.mc_character()
 		
-	# Method that creates the dictionary representing the labyrinth
+	# Method which generate the structure from the maze.txt 
+	# and that creates the dictionary representing the labyrinth
 	def create_table(self):
 	
 		N = 15
-		FichierLabyrinth = open('maze.txt', 'r') # instanciation de l'objet Fichier 
+		FileLabyrinth = open('maze.txt', 'r') # instanciation de l'objet Fichier 
 		lignes, colonnes = 15, 15
 
 		liste = [ 0 for i  in range(0)]  
@@ -36,7 +37,7 @@ class labyrinthe:
 		index, i, j = 0, 0, 0
 		for i in range(N):
 			for j in range(N):
-				lab = FichierLabyrinth.read()
+				lab = FileLabyrinth.read()
 				lab = lab.replace('\n','') 
 				
 				while index < len(lab):
