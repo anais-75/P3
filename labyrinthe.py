@@ -124,7 +124,7 @@ class labyrinthe:
 	def mc_character(self):
 		for i in self.maze:
 			if self.maze[i] == 'd':
-				self.maze[i] = Items(CHAR[0])	
+				self.maze[i] = Items(CHAR[0])      	
 				
 	# we create 4 méthods to move macgyver 
 	def move_left(self):

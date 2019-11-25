@@ -1,4 +1,3 @@
-# from constants import *
 
 class Items():
 	def __init__(self, name):
@@ -8,10 +7,9 @@ class Items():
 	def __repr__(self):
 		return self.name
 	
-	"""Je définis ici une classe spéciale qui me compare deux objet de type Items	"""
+	"""I define here a special class which compares me two objects of type Items"""
 	def __eq__(self, items):
 		return self.name == items
 
-if __name__ == "__main__":
-	#test
+if __name__ == "__main__":  
 	print("items")
