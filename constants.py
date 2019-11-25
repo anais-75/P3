@@ -11,8 +11,10 @@ SIDE_WINDOW = NUMBER_SPRITE_SIDE * SIZE_SPRITE
 TITLE_WINDOW = "pictures/MacGyver"
 IMAGE_ICONE = "pictures/MacGyver.png"
 
-#lists of picturs for the game 
+#lists of pictures for the game
+# guardian image, it's the exit path of the labyrinth
 IMAGE_ARRIVAL = "pictures/Gardien.png"
+# background-image, will be used as "path" cells
 BACKGROUND = "pictures/Background.jpg"
 WALL = "pictures/Wall.png"
 MACGYVER = "pictures/MacGyver.png"

@@ -10,19 +10,17 @@ fils: MacGyver.py labyrinthe_Mc.py, classes.py, constantes.py, in constants ther
 
 import time
 import random 
-from MacGyver import*
+from MacGyver import *
 from items import Items
-from constants import*
-from labyrinthe import*
+from constants import *
+from labyrinthe import *
 import pygame
-from pygame.locals import *
-from items import Items
 
 
 class application:
 	
 	def __init__(self):	
-		count =0
+		count = 0
 		# set window size and title 
 		self.window = pygame.display.set_mode((450, 450))
 		pygame.display.set_caption("MacGyver")
@@ -59,16 +57,16 @@ class application:
 		# we make 3 loop, once to per object to be placed 
 		for items in ITEMS:
 			# retrieve coordinates to place object
-			x = random.choice(l.free_cells)
+			new_coo = random.choice(l.free_cells)
 
 			# check if the randomly selected box has not already been taken
 			#by a previous loop
 			for cell in l.free_cells:
-				if cell == x:
+				if cell == new_coo:
 					l.free_cells.remove(cell)
 
 			# put an item in the box of coordinates found randomly
-			l.maze[x] = pygame.image.load((items)).convert_alpha()
+			l.maze[new_coo] = pygame.image.load( ( items ) ).convert_alpha()
 			
 	# method that allows you to place objects randomly	
 	def obj_rand(self):
@@ -85,7 +83,7 @@ class application:
 		return rectangle
 	
 	# method for score display	
-	def score_display  (self, count): 
+	def score_display(self, count): 
 		score_font = pygame.font.SysFont('comicsansms', 25, True, True)
 		pygame.font.Font.set_bold
 		couleur_font = (255, 255, 255)
