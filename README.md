@@ -2,8 +2,7 @@
 					Aidez MacGyver à s’échapper
 				
 # Présentation
-MacGyver est enfermé dans un labyrinthe, pour s'échapper il doit ramasser trois objets   
-et endormir le gardien qui protège la sortie.
+MacGyver est enfermé dans un labyrinthe, pour s'échapper il doit ramasser trois objets et endormir le gardien qui protège la sortie.
 les trois objets sont déposés aléatoirement, MacGyver doit ramasser l’objet en se déplaçant sur la case contenant ce dernier, les objets changent de place à chaque fois que l'utilisateur relance le jeu.
 Si MacGyver ramasse les trois objets et se présente devant le gardien, l’utilisateur gagne ; sinon s’il n'a pas ramassé les trois objets et qu'il se présente devant le garde, il perd la partie.
 la structure  du jeu est enregistrée dans un fichier texte  pour faciliter la modification.
