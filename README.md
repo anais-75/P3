@@ -1,6 +1,6 @@
                 
-					# Aidez MacGyver à s’échapper
-
+					Aidez MacGyver à s’échapper
+				
 # Présentation
         MacGyver est enfermé dans un labyrinthe, pour s'échapper il doit ramasser trois objets   
 et endormir le gardien qui protège la sortie.
@@ -19,17 +19,17 @@ la fenêtre est un carré de 15 sprites sur laquelle Macgyver se déplace à l�
 
 # Installation
     • pour l’installation de l’environnement virtuel 
-		 Exécuter :`pip3 install Virtualenv`
+		 Exécuter : pip3 install Virtualenv
     • pour créer l’environnement 
-		 Exécuter : `virtualenv -p python3 env`
+		 Exécuter : virtualenv -p python3 env
     • pour activer l’environnement  
-	   Exécuter : `source env/bin/activate`
+	   Exécuter : source env/bin/activate
     puis Lancer le programme
     Exécuter : python launch.py depuis la console
 
 # Paramétrage
 
-        Le labyrinthe est généré à partir d’un fichier sous format .txt , il contient 15 lignes et 15 colonnes de caractères: "w" = Wall,  "o" = Open,  "d" = Departure,  "a" = Arrival.
+        Le labyrinthe est généré à partir d’un fichier sous format .txt , il contient 15 lignes et 15 colonnes de  caractères: "w" = Wall,  "o" = Open,  "d" = Departure,  "a" = Arrival.
     • La méthode create_table() de la classe Labyrinthe génère une liste à partir de la lecture du fichier maze.txt  qu’elle retourne.
     •  On affiche la photo du gardien sur la case "a" .
     •  On affiche la photo de MacGyver sur la case “d”, 
